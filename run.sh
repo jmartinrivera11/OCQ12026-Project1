@@ -1,1 +1,0 @@
-cmake --build build && ./EasyMIPS --run front.asm --sc-handler build/libmips_display.so

@@ -6,10 +6,9 @@ static std::unique_ptr<MipsDisplay> display;
 extern "C" ErrorCode handleSyscall(uint32_t *regs, void *mem, MemoryMap *mem_map)
 {
     unsigned v0 = regs[Register::v0];
-
     switch (v0)
     {
-        case 100: // start engine
+        case 100: // Start engine
             if(!display) {
                 display = std::make_unique<MipsDisplay>();
                 display->RunEngine();
@@ -33,7 +32,7 @@ extern "C" ErrorCode handleSyscall(uint32_t *regs, void *mem, MemoryMap *mem_map
             }
             return ErrorCode::Ok;
 
-        case 103: // clear
+        case 103: //Clear
             if(display) {
                 uint32_t color = regs[Register::a0];
                 display->Clear(color);
